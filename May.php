@@ -12,7 +12,9 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet cua may: ');
         for ($i = 0; $i <$this->so_luong_chi_tiet;$i++)
         {
-            echo 'D: Chi tiet don ---------------- P: Chi tiet phuc';
+            echo 'D: Chi tiet Don';
+            echo "\n";
+            echo'P: Chi tiet Phuc';
             echo "\n";
             $loai_chi_tiet = readline('Nhap loai chi tiet: ');
             $new_chi_tiet = null;
@@ -34,16 +36,18 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
     }
     public function xuatThongTin()
     {
+        echo '+------------------------------------+';
+        echo "\n";
         echo 'May: ';
         echo ' ';
         echo $this->ma_so;
         echo ' ';
         echo 'bao gom: ';
-        echo "\n";
-        echo '-----';
-        echo 'So luong chi tiet: ';
-        echo ' ';
         echo $this->so_luong_chi_tiet;
+        echo ' chi tiet';
+        echo '------------------';
+        echo "\n";
+        echo 'Thong tin chi tiet';
         echo "\n";
 
         for($i=0; $i<$this->so_luong_chi_tiet; $i++)
@@ -60,6 +64,7 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
             }
 //                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
         }
+
     }
     public function tinhTien()
     {
@@ -86,5 +91,16 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
             $tongKL += $this->danh_sach_chi_tiet[$i]->tinhKhoiLuong();
         }
         return $tongKL;
+    }
+    public function timKiemMayTheoMaSo($ma_so)
+    {
+        for($i=0; $i<$this->so_luong_chi_tiet; $i++)
+        {
+            if ( $ma_so != $this->danh_sach_chi_tiet[$i]->ma_so)
+            {
+                echo 'Khong tim thay may nao !';
+            }
+            else return $this->danh_sach_chi_tiet[$i]->xuatThongTin();
+        }
     }
 }

@@ -12,7 +12,9 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
 
         for ($i = 0; $i <$this->so_luong_chi_tiet;$i++)
         {
-            echo 'D: Chi tiet don ----------------P: Chi tiet phuc';
+            echo 'D: Chi tiet Don';
+            echo "\n";
+            echo 'P: Chi tiet Phuc';
             echo "\n";
             $loai_chi_tiet = readline('Nhap loai chi tiet: ');
             $new_chi_tiet = null;
@@ -36,13 +38,16 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
 
     public function xuatThongTin()
     {
-        echo '-----Chi tiet Phuc ';
+        echo '+------------------------------------+';
+        echo "\n";
+        echo 'Chi tiet Phuc ';
         echo ' ';
         echo $this->ma_so;
         echo ' ';
         echo 'bao gom: ';
         echo "\n";
-        echo '-----';
+        echo '------------------';
+        echo "\n";
         echo 'So luong chi tiet: ';
         echo ' ';
         echo $this->so_luong_chi_tiet;
@@ -62,6 +67,7 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
             }
 //                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
         }
+
     }
     public function tinhTien()
     {

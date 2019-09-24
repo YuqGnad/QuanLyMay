@@ -45,6 +45,8 @@ class Kho extends May implements NhapXuat,XuLy
 
     public function xuatThongTin()
     {
+        echo '+------------------------------------+';
+        echo "\n";
         echo 'Kho: ';
         echo ' ';
         echo $this->ma_so;
@@ -72,6 +74,7 @@ class Kho extends May implements NhapXuat,XuLy
 ////                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
               $this->danh_sach_chi_tiet[$i]->xuatThongTin();
         }
+
     }
     public function tinhTien()
     {
@@ -91,5 +94,17 @@ class Kho extends May implements NhapXuat,XuLy
             $tongKL += $this->danh_sach_chi_tiet[$i]->tinhKhoiLuong();
         }
         return $tongKL;
+    }
+    public function timKiemMayTheoMaSo($ma_so)
+    {
+        for($i=0; $i<$this->so_luong_chi_tiet; $i++)
+        {
+            if ( $ma_so === $this->danh_sach_chi_tiet[$i]->ma_so)
+            {
+                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
+            }
+            else echo 'Khong tim thay may nao';
+            echo "\n";
+        }
     }
 }

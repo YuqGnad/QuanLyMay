@@ -9,7 +9,7 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
     public function Nhap($ma_so = null, $gia = null, $khoi_luong = 0)
     {
         $this->ma_so = readline('Nhap ma so Chi tiet don: ');
-        while ($this->ma_so[0]!='D') //&& $this->gia < 0 && $this->khoi_luong < 0)
+        while ($this->ma_so[0]!='D') //&& $this->gia < 0 && $this->khoi_luong < 0) //Kiem tra nhap ma so chi tiet don
         {
             $this->ma_so = readline('Moi nhap lai ');
         }
@@ -25,15 +25,15 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
 
     public function xuatThongTin()
     {
-        echo '___________________________________________';
+        echo '+------------------------------------+';
         echo "\n";
-        echo '|* Ma so chi tiet don: ' . $this->ma_so;
+        echo '| Ma so chi tiet Don: ' . $this->ma_so;
         echo "\n";
-        echo '|* Gia tien chi tiet don: ' . $this->gia;
+        echo '| Gia tien chi tiet Don: ' . $this->gia. ' VND';
         echo "\n";
-        echo '|* Khoi luong chi tiet don: ' . $this->khoi_luong. ' kg';
+        echo '| Khoi luong chi tiet Don: ' . $this->khoi_luong. ' kg';
         echo "\n";
-        echo '___________________________________________';
+        echo '+------------------------------------+';
         echo "\n";
     }
 
