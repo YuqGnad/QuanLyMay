@@ -4,10 +4,16 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
 {
     public $danh_sach_chi_tiet = array();
     public $so_luong_chi_tiet;
-
+    //Ham nhap chi tiet Phuc
     public function Nhap($ma_so = null, $danh_sach_chi_tiet = null, $so_luong_chi_tiet_don = null)
     {
         $this->ma_so = readline('Nhap ma so Chi tiet Phuc: ');
+        while ($this->ma_so[0]!='P')  //Kiem tra nhap ma so chi tiet Phuc
+        {
+            echo 'Ma so Chi tiet Phuc co dang P** VD: P01, P02,P03..';
+            echo "\n";
+            $this->ma_so = readline('Moi nhap lai ma so CT Phuc: ');
+        }
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet con: ');
 
         for ($i = 0; $i <$this->so_luong_chi_tiet;$i++)
@@ -35,7 +41,7 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
 //        $new_chi_tiet->Nhap();
 //        array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
     }
-
+    //Ham xuat thong tin chi tiet Phuc
     public function xuatThongTin()
     {
         echo '+------------------------------------+';
@@ -55,7 +61,7 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
 
         for($i=0; $i<$this->so_luong_chi_tiet; $i++)
         {
-            if (substr($this->danh_sach_chi_tiet[$i]->ma_so,0,1) == 'P')
+            if (substr($this->danh_sach_chi_tiet[$i]->ma_so,0,1) == 'P')//Kiem tra co la chi tiet Phuc hay k
             {
 
                 $this->danh_sach_chi_tiet[$i]->xuatThongTin();
@@ -69,6 +75,7 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
         }
 
     }
+    //Ham tinh tien chi tiet Phuc
     public function tinhTien()
     {
         $tongTien = 0;
@@ -83,34 +90,14 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
                 $tongTien += $this->danh_sach_chi_tiet[$i]->tinhTien();
             }
         }
-//        foreach ($this->danh_sach_chi_tiet as $ds)
-//        {
-//            if (substr($ds->ma_so,0,1) != 'P')
-//            {
-//                $tong += $ds->tinhTien();
-//            }
-//            else
-//            {
-//                $a = new ChiTietPhuc($ds->ma_so,$ds->danh_sach_chi_tiet,sizeof($ds->danh_sach_chi_tiet));
-//                $tong = $tong + $a->tinhTien();
-//            }
-//        }
         return $tongTien;
     }
+    //Ham tinh khoi luong CT Phuc
     public function tinhKhoiLuong()
     {
         $tongKL = 0;
         for($i=0; $i<$this->so_luong_chi_tiet; $i++)
         {
-//            if (substr($this->danh_sach_chi_tiet[$i]->ma_so,0,1) != 'P')
-//            {
-//                $tongKL += $this->danh_sach_chi_tiet[$i]->tinhKhoiLuong();
-//            }
-//            else
-//            {
-//                $tongKL += $this->danh_sach_chi_tiet[$i]->tinhKhoiLuong();
-//            }
-            //Cach 2:
 
             $tongKL += $this->danh_sach_chi_tiet[$i]->tinhKhoiLuong();
         }

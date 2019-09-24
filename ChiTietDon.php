@@ -5,24 +5,20 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
 {
     public $gia;
     public $khoi_luong;
-
+    //Ham nhap chi tiet don
     public function Nhap($ma_so = null, $gia = null, $khoi_luong = 0)
     {
         $this->ma_so = readline('Nhap ma so Chi tiet don: ');
-        while ($this->ma_so[0]!='D') //&& $this->gia < 0 && $this->khoi_luong < 0) //Kiem tra nhap ma so chi tiet don
+        while ($this->ma_so[0]!='D')  //Kiem tra nhap ma so chi tiet don
         {
-            $this->ma_so = readline('Moi nhap lai ');
+            echo 'Ma so Chi tiet Don co dang D** VD: D01, D02,D03..';
+            echo "\n";
+            $this->ma_so = readline('Moi nhap lai ma so chi tiet don ');
         }
         $this->gia = readline('Nhap gia Chi tiet don: ');
-//        while ($this->gia < 0 && is_numeric($this->gia) == true )
-//        {
-//            $this->gia = readline('Hay nhap gia dung : ');
-//           // $this->khoi_luong = readline('Nhap khoi luong Chi tiet don: ');
-//
-//        }
         $this->khoi_luong = readline('Nhap khoi luong : ');
     }
-
+    //Ham xuat chi tiet don
     public function xuatThongTin()
     {
         echo '+------------------------------------+';
@@ -36,12 +32,12 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
         echo '+------------------------------------+';
         echo "\n";
     }
-
+    //Ham lay gia tien chi tiet Don
     public function tinhTien()
     {
         return $this->gia;
     }
-
+    //ham lay khoi luong chi tiet Don
     public function tinhKhoiLuong()
     {
         return $this->khoi_luong;

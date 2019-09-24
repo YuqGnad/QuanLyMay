@@ -3,10 +3,16 @@ require_once 'May.php';
 
 class Kho extends May implements NhapXuat,XuLy
 {
-
+    //Ham Nhap kho
     public function Nhap()
     {
         $this->ma_so = readline('Nhap ma so kho: ');
+        while ($this->ma_so[0]!='K')  //Kiem tra nhap ma so Kho
+        {
+            echo 'Ma so Kho co dang K** VD: K01, K02, K03..';
+            echo "\n";
+            $this->ma_so = readline('Moi nhap lai ma so kho: ');
+        }
         $this->ten = readline('Nhap ten kho: ');
         $this->so_luong_chi_tiet = readline('Nhap so luong may: ');
         $may = null;
@@ -16,33 +22,10 @@ class Kho extends May implements NhapXuat,XuLy
               $may = new May();
               $may->Nhap();
               array_push($this->danh_sach_chi_tiet,$may);
-//            echo 'D: Chi tiet don ---------------- P: Chi tiet phuc';
-//            echo "\n";
-//            $loai_chi_tiet = readline('Nhap loai chi tiet: ');
-//            if ($loai_chi_tiet != 'D' && $loai_chi_tiet !='P')
-//            {
-//                echo 'Ban da nhap sai, moi nhap lai: ';
-//                echo ' ';
-//                $loai_chi_tiet = readline('');
-//                $i--;
-//            }
-//            $new_chi_tiet = null;
-//            if ($loai_chi_tiet == 'D')
-//            {
-//                $new_chi_tiet = new ChiTietDon();
-//                $new_chi_tiet->Nhap();
-//                array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
-//
-//            }
-//            if ($loai_chi_tiet == 'P')
-//            {
-//                $new_chi_tiet = new ChiTietPhuc();
-//                $new_chi_tiet->Nhap();
-//                array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
-//            }
+
         }
     }
-
+    // Ham xuat thong tin kho
     public function xuatThongTin()
     {
         echo '+------------------------------------+';
@@ -57,25 +40,17 @@ class Kho extends May implements NhapXuat,XuLy
         echo ' ';
         echo 'may';
         echo "\n";
+        echo '---------------------------';
+        echo "\n";
         echo 'Thong tin chi tiet tung may: ';
         echo "\n";
         for($i=0; $i<$this->so_luong_chi_tiet; $i++)
         {
-//            if (substr($this->danh_sach_chi_tiet[$i]->ma_so,0,1) == 'M')
-//            {
-//
-//                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
-//            }
-//            else
-//            {
-//
-//                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
-//            }
-////                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
               $this->danh_sach_chi_tiet[$i]->xuatThongTin();
         }
 
     }
+    //Ham tinh tien trong kho
     public function tinhTien()
     {
         $tongTien = 0;
@@ -85,7 +60,7 @@ class Kho extends May implements NhapXuat,XuLy
         }
         return $tongTien;
     }
-
+    //Ham tinh khoi luong kho
     public function tinhKhoiLuong()
     {
         $tongKL = 0;
@@ -95,15 +70,16 @@ class Kho extends May implements NhapXuat,XuLy
         }
         return $tongKL;
     }
+    //ham tim kiem may theo ma so
     public function timKiemMayTheoMaSo($ma_so)
     {
         for($i=0; $i<$this->so_luong_chi_tiet; $i++)
         {
-            if ( $ma_so === $this->danh_sach_chi_tiet[$i]->ma_so)
+            if ( $this->danh_sach_chi_tiet[$i]->ma_so == $ma_so)
             {
                 $this->danh_sach_chi_tiet[$i]->xuatThongTin();
             }
-            else echo 'Khong tim thay may nao';
+            else echo 'Khong tim thay may nao !';
             echo "\n";
         }
     }

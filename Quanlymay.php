@@ -31,7 +31,7 @@ while (true)
         echo 'Ban da nhap sai, moi nhap lai: ';
         $chose_luachon = readline('');
     }
-//Nhap chi tiet
+    //Nhap chi tiet
     if ($chose_luachon == 1) {
         $chi_tiet_con = null;
         $chose_soluong_doituong = readline('Ban muon nhap bao nhieu doi tuong: ');
@@ -39,7 +39,7 @@ while (true)
             $j = $chose_soluong_doituong - $i;
             echo '+--------------------------+';
             echo "\n";
-            echo '|So doi tuong can nhap:  ' . $j . ' |';
+            echo '|So doi tuong can nhap:  ' . $j . ' |'; //In ra so luong can nhap
             echo "\n";
             echo '+--------------------------+';
             echo "\n";
@@ -74,7 +74,8 @@ while (true)
             echo "\n";
         }
     }
-    if ($chose_luachon == 2) //Nhap kho
+    //Nhap kho
+    if ($chose_luachon == 2)
     {
 
         $kho = new Kho();
@@ -83,7 +84,8 @@ while (true)
         echo 'Da nhap xong !';
         echo "\n";
     }
-    if ($chose_luachon == 3) //Exit
+    //Exit
+    if ($chose_luachon == 3)
     {
         break;
     }
@@ -100,10 +102,12 @@ while (true) {
     echo '+------------------------------------+';
     echo "\n";
     $chose_thongke = readline('Ban muon thong ke gi: ');
+    //Ham kiem tra nhap yeu cau
     while ($chose_thongke > 6 || is_numeric($chose_thongke) == false) {
         echo 'Ban da yeu cau sai, moi nhap lai: ';
         $chose_thongke = readline('');
     }
+    //Thong ke cac chi tiet Don, Phuc, May
     if ($chose_thongke == 4) {
         echo '+------------------------------------+';
         echo "\n";
@@ -118,6 +122,7 @@ while (true) {
         echo '+------------------------------------+';
         echo "\n";
         $chose_loai_thongke = readline('');
+        //thong ke thong tin
         if ($chose_loai_thongke == 1) {
             echo ' Thong ke thong tin chi tiet';
             echo "\n";
@@ -134,22 +139,26 @@ while (true) {
             echo '+------------------------------------+';
             echo "\n";
             $chose_loai_thongke_thongtin = readline('');
+            //Thong ke CT Don
             if ($chose_loai_thongke_thongtin == 'D') {
                 foreach ($arrDon as $value) {
                     $value->xuatThongTin();
                 }
             }
+            //Thong ke CT Phuc
             if ($chose_loai_thongke_thongtin == 'P') {
                 foreach ($arrPhuc as $value) {
                     $value->xuatThongTin();
                 }
             }
+            //Thong ke May
             if ($chose_loai_thongke_thongtin == 'M') {
                 foreach ($arrMay as $value) {
                     $value->xuatThongTin();
                 }
             }
         }
+        //Thong ke khoi luong
         if ($chose_loai_thongke == 2) {
             echo ' Thong ke khoi luong';
             echo "\n";
@@ -198,6 +207,7 @@ while (true) {
                 }
             }
         }
+        //Thong ke tong tien
         if ($chose_loai_thongke == 3) {
             echo ' Thong ke tong tien chi tiet';
             echo "\n";
@@ -237,6 +247,7 @@ while (true) {
             if ($chose_loai_thongke_thongtin == 'M') {
                 foreach ($arrMay as $value) {
                     echo '+------------------------------------+';
+                    echo "\n";
                     echo '| Tong tien may: ' . $value->ten . ' la: ' . $value->tinhTien();
                     echo "\n";
                     echo '+------------------------------------+';
@@ -245,6 +256,7 @@ while (true) {
             }
         }
     }
+    //Thong ke kho
     if ($chose_thongke == 5)
     {
         echo '+------------------------------------+';
@@ -262,11 +274,13 @@ while (true) {
         echo '+------------------------------------+';
         echo "\n";
         $chose_loai_thongke = readline('');
+        //Thong ke thong tin
         if ($chose_loai_thongke == 1) {
 
                 $kho->xuatThongTin();
                 echo "\n";
         }
+        //Thong ke khoi luong
         if ($chose_loai_thongke == 2) {
             echo '+------------------------------------+';
             echo "\n";
@@ -275,6 +289,7 @@ while (true) {
             echo '+------------------------------------+';
             echo "\n";
         }
+        //Thong ke tong tien
         if ($chose_loai_thongke== 3) {
             echo '+------------------------------------+';
             echo "\n";
@@ -283,6 +298,7 @@ while (true) {
             echo '+------------------------------------+';
             echo "\n";
         }
+        //Tim may theo ID
         if ($chose_loai_thongke==4) {
             echo '+------------------------------------+';
             echo "\n";
@@ -293,53 +309,12 @@ while (true) {
             $kho->timKiemMayTheoMaSo($IDmay);
         }
     }
+    //Thoat
     if ($chose_thongke==6)
     {
         break;
     }
 }
 
-
-
-
-
-
-
-
-//echo 'Danh sach chi tiet don: ';
-//echo "\n";
-//foreach ($arrDon as $value)
-//{
-//    $value->xuatThongTin();
-//}
-//echo 'Danh sach chi tiet Phuc: ';
-//echo "\n";
-//foreach ($arrPhuc as $value)
-//{
-//    $value->xuatThongTin();
-//}
-//echo 'Danh sach may : ';
-//echo "\n";
-//foreach ($arrMay as $value)
-//{
-//    $value->xuatThongTin();
-//}
-//$tong = 0;
-//$tongKL=0;
-//foreach ($arr as $value)
-//{
-//    $tong += $value->tinhTien();
-//}
-//foreach ($arr as $value)
-//{
-//    $tongKL += $value->tinhKhoiLuong();
-//}
-//echo 'Tong tien cua may: '.$tong;
-//echo 'Tong KL cua may: '.$tongKL;
-//$a = new Kho();
-//$a->Nhap();
-//$a->xuatThongTin();
-//echo $a->tinhTien();
-//echo $a->tinhKhoiLuong();
 
 

@@ -4,10 +4,16 @@
 class May extends ChiTietPhuc implements NhapXuat,XuLy
 {
     public $ten;
-
+    //ham nhap may
     public function Nhap($ma_so = null, $ten_may = null, $danh_sach_chi_tiet = null)
     {
         $this->ma_so = readline('Nhap ma so may: ');
+        while ($this->ma_so[0]!='M')  //Kiem tra nhap ma so May
+        {
+            echo 'Ma so May co dang M** VD: M01, M02,M03..';
+            echo "\n";
+            $this->ma_so = readline('Moi nhap lai ma so may: ');
+        }
         $this->ten = readline('Nhap ten may: ');
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet cua may: ');
         for ($i = 0; $i <$this->so_luong_chi_tiet;$i++)
@@ -34,6 +40,7 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
         }
 
     }
+    //ham xuat thong tin may
     public function xuatThongTin()
     {
         echo '+------------------------------------+';
@@ -45,6 +52,7 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
         echo 'bao gom: ';
         echo $this->so_luong_chi_tiet;
         echo ' chi tiet';
+        echo "\n";
         echo '------------------';
         echo "\n";
         echo 'Thong tin chi tiet';
@@ -66,6 +74,7 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
         }
 
     }
+    //ham tinh tong tien may
     public function tinhTien()
     {
         $tongTien = 0;
@@ -82,7 +91,7 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
         }
         return $tongTien;
     }
-
+    //ham tinh khoi luong may
     public function tinhKhoiLuong()
     {
         $tongKL = 0;
@@ -92,15 +101,5 @@ class May extends ChiTietPhuc implements NhapXuat,XuLy
         }
         return $tongKL;
     }
-    public function timKiemMayTheoMaSo($ma_so)
-    {
-        for($i=0; $i<$this->so_luong_chi_tiet; $i++)
-        {
-            if ( $ma_so != $this->danh_sach_chi_tiet[$i]->ma_so)
-            {
-                echo 'Khong tim thay may nao !';
-            }
-            else return $this->danh_sach_chi_tiet[$i]->xuatThongTin();
-        }
-    }
+
 }
