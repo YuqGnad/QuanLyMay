@@ -7,15 +7,14 @@ require_once 'Kho.php';
 //------------------------
 
 
-$arrDon = [];
-$arrPhuc = [];
-$arrMay = [];
+$arrDon = []; // danh sach Chi tiet Don
+$arrPhuc = [];// danh sach Chi tiet Phuc
+$arrMay = []; // danh sach May
 $kho = null;
 
 //Ham kiem tra nhap
-while (true)
-{
-
+while (true) {
+    echo  var_dump(3.5);
     echo '+---------------MenuNhap-------------+'; //Menu nhap
     echo "\n";
     echo '| 1.Nhap chi tiet                    |';
@@ -27,14 +26,16 @@ while (true)
     echo '+------------------------------------+';
     echo "\n";
     $chose_luachon = readline('Nhap lua chon cua ban: ');
-    while ($chose_luachon > 3 || is_numeric($chose_luachon) == false) {
-        echo 'Ban da nhap sai, moi nhap lai: ';
-        $chose_luachon = readline('');
+    while ($chose_luachon > 3 || (is_numeric($chose_luachon) == false && is_int($chose_luachon) == false && is_double($chose_luachon) == true) || $chose_luachon <= 0) {
+        $chose_luachon = readline('Ban da nhap sai, moi nhap lai:');
+        echo '+--------------------------+';
+        echo "\n";
     }
     //Nhap chi tiet
     if ($chose_luachon == 1) {
         $chi_tiet_con = null;
         $chose_soluong_doituong = readline('Ban muon nhap bao nhieu doi tuong: ');
+
         for ($i = 0; $i < $chose_soluong_doituong; $i++) {
             $j = $chose_soluong_doituong - $i;
             echo '+--------------------------+';
@@ -45,26 +46,31 @@ while (true)
             echo "\n";
             echo 'Chon doi tuong can nhap';
             echo "\n";
-            echo 'D: Chi tiet Don';
+            echo '1: Chi tiet Don';
             echo "\n";
-            echo 'P: Chi tiet Phuc';
+            echo '2: Chi tiet Phuc';
             echo "\n";
-            echo 'M: May';
+            echo '3: May';
             echo "\n";
-            $chose_doituong = readline('');
+            $chose_doituong = readline('Ban can nhap doi tuong nao: ');
             echo "\n";
+            while ($chose_doituong > 3 || (is_numeric($chose_doituong) == false && is_int($chose_doituong) == false && is_double($chose_doituong) == true) || $chose_doituong <= 0) {
+                $chose_doituong = readline('Ban da nhap sai, moi nhap lai:');
+                echo '+--------------------------+';
+                echo "\n";
+            }
             switch ($chose_doituong) {
-                case 'D': //Chi tiet don
+                case 1: //Chi tiet don
                     $chi_tiet_con = new ChiTietDon();
                     $chi_tiet_con->Nhap();
                     array_push($arrDon, $chi_tiet_con);
                     break;
-                case 'P': //Chi tiet phuc
+                case 2: //Chi tiet phuc
                     $chi_tiet_con = new ChiTietPhuc();
                     $chi_tiet_con->Nhap();
                     array_push($arrPhuc, $chi_tiet_con);
                     break;
-                case 'M': //May
+                case 3: //May
                     $chi_tiet_con = new May();
                     $chi_tiet_con->Nhap();
                     array_push($arrMay, $chi_tiet_con);
@@ -75,8 +81,7 @@ while (true)
         }
     }
     //Nhap kho
-    if ($chose_luachon == 2)
-    {
+    if ($chose_luachon == 2) {
         $kho = new Kho();
         $kho->Nhap();
         echo "\n";
@@ -91,22 +96,22 @@ while (true)
 while (true) {
     echo '+--------------MenuThongke-----------+';//Menu thong ke
     echo "\n";
-    echo '|4.Thong ke chi tiet don,phuc,may    |';
+    echo '| 1.Thong ke chi tiet don,phuc,may   |';
     echo "\n";
-    echo '|5.Thong ke kho                      |';
+    echo '| 2.Thong ke kho                     |';
     echo "\n";
-    echo '|6.Thoat                             |';
+    echo '| 3.Thoat                            |';
     echo "\n";
     echo '+------------------------------------+';
     echo "\n";
     $chose_thongke = readline('Ban muon thong ke gi: ');
     //Ham kiem tra nhap yeu cau
-    while ($chose_thongke > 6 || is_numeric($chose_thongke) == false) {
+    while ($chose_thongke > 3 || (is_numeric($chose_thongke) == false && is_int($chose_thongke) == false && is_double($chose_thongke) == true) || $chose_thongke <= 0) {
         echo 'Ban da yeu cau sai, moi nhap lai: ';
         $chose_thongke = readline('');
     }
     //Thong ke cac chi tiet Don, Phuc, May
-    if ($chose_thongke == 4) {
+    if ($chose_thongke == 1) {
         echo '+------------------------------------+';
         echo "\n";
         echo '| Chon loai thong ke:                |';
@@ -119,7 +124,11 @@ while (true) {
         echo "\n";
         echo '+------------------------------------+';
         echo "\n";
-        $chose_loai_thongke = readline('');
+        $chose_loai_thongke = readline('Ban muon thong ke gi: ');
+        while ($chose_loai_thongke > 3 || (is_numeric($chose_loai_thongke) == false && is_int($chose_loai_thongke) == false && is_double($chose_loai_thongke) == true) || $chose_loai_thongke <= 0) {
+            echo 'Ban da yeu cau sai, moi nhap lai: ';
+            $chose_loai_thongke = readline('');
+        }
         //thong ke thong tin
         if ($chose_loai_thongke == 1) {
             echo ' Thong ke thong tin chi tiet';
@@ -128,29 +137,34 @@ while (true) {
             echo "\n";
             echo '| Chon loai chi tiet:                |';
             echo "\n";
-            echo '| D: Chi tiet don                    |';
+            echo '| 1: Chi tiet don                    |';
             echo "\n";
-            echo '| P: Chi tiet phuc                   |';
+            echo '| 2: Chi tiet phuc                   |';
             echo "\n";
-            echo '| M: May                             |';
+            echo '| 3: May                             |';
             echo "\n";
             echo '+------------------------------------+';
             echo "\n";
-            $chose_loai_thongke_thongtin = readline('');
+            $chose_loai_thongke_thongtin = readline('Ban muon thong ke doi tuong nao: ');
+            while ($chose_loai_thongke_thongtin > 3 || (is_numeric($chose_loai_thongke_thongtin) == false && is_int($chose_loai_thongke_thongtin) == false && is_double($chose_loai_thongke_thongtin) == true) || $chose_loai_thongke_thongtin <= 0) {
+                $chose_loai_thongke_thongtin = readline('Ban da yeu cau sai, moi nhap lai:');
+                echo '+------------------------------------+';
+                echo "\n";
+            }
             //Thong ke CT Don
-            if ($chose_loai_thongke_thongtin == 'D') {
+            if ($chose_loai_thongke_thongtin == 1) {
                 foreach ($arrDon as $value) {
                     $value->xuatThongTin();
                 }
             }
             //Thong ke CT Phuc
-            if ($chose_loai_thongke_thongtin == 'P') {
+            if ($chose_loai_thongke_thongtin == 2) {
                 foreach ($arrPhuc as $value) {
                     $value->xuatThongTin();
                 }
             }
             //Thong ke May
-            if ($chose_loai_thongke_thongtin == 'M') {
+            if ($chose_loai_thongke_thongtin == 3) {
                 foreach ($arrMay as $value) {
                     $value->xuatThongTin();
                 }
@@ -164,16 +178,21 @@ while (true) {
             echo "\n";
             echo '| Chon loai chi tiet:                |';
             echo "\n";
-            echo '| D: Chi tiet don                    |';
+            echo '| 1: Chi tiet don                    |';
             echo "\n";
-            echo '| P: Chi tiet phuc                   |';
+            echo '| 2: Chi tiet phuc                   |';
             echo "\n";
-            echo '| M: May                             |';
+            echo '| 3: May                             |';
             echo "\n";
             echo '+------------------------------------+';
             echo "\n";
             $chose_loai_thongke_thongtin = readline('');
-            if ($chose_loai_thongke_thongtin == 'D') {
+            while ($chose_loai_thongke_thongtin > 3 || (is_numeric($chose_loai_thongke_thongtin) == false && is_int($chose_loai_thongke_thongtin) == false && is_double($chose_loai_thongke_thongtin) == true) || $chose_loai_thongke_thongtin <= 0) {
+                $chose_loai_thongke_thongtin = readline('Ban da yeu cau sai, moi nhap lai:');
+                echo '+------------------------------------+';
+                echo "\n";
+            }
+            if ($chose_loai_thongke_thongtin == 1) {
                 foreach ($arrDon as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
@@ -184,7 +203,7 @@ while (true) {
                 }
 
             }
-            if ($chose_loai_thongke_thongtin == 'P') {
+            if ($chose_loai_thongke_thongtin == 2) {
                 foreach ($arrPhuc as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
@@ -194,7 +213,7 @@ while (true) {
                     echo "\n";
                 }
             }
-            if ($chose_loai_thongke_thongtin == 'M') {
+            if ($chose_loai_thongke_thongtin == 3) {
                 foreach ($arrMay as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
@@ -213,16 +232,21 @@ while (true) {
             echo "\n";
             echo '| Chon loai chi tiet:                |';
             echo "\n";
-            echo '| D: Chi tiet don                    |';
+            echo '| 1: Chi tiet don                    |';
             echo "\n";
-            echo '| P: Chi tiet phuc                   |';
+            echo '| 2: Chi tiet phuc                   |';
             echo "\n";
-            echo '| M: May                             |';
+            echo '| 3: May                             |';
             echo "\n";
             echo '+------------------------------------+';
             echo "\n";
-            $chose_loai_thongke_thongtin = readline('');
-            if ($chose_loai_thongke_thongtin == 'D') {
+            $chose_loai_thongke_thongtin = readline('Ban muon thong ke doi tuong nao');
+            while ($chose_loai_thongke_thongtin > 3 || (is_numeric($chose_loai_thongke_thongtin) == false && is_int($chose_loai_thongke_thongtin) == false && is_double($chose_loai_thongke_thongtin) == true) || $chose_loai_thongke_thongtin <= 0) {
+                $chose_loai_thongke_thongtin = readline('Ban da yeu cau sai, moi nhap lai:');
+                echo '+------------------------------------+';
+                echo "\n";
+            }
+            if ($chose_loai_thongke_thongtin == 1) {
                 foreach ($arrDon as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
@@ -232,7 +256,7 @@ while (true) {
                 }
 
             }
-            if ($chose_loai_thongke_thongtin == 'P') {
+            if ($chose_loai_thongke_thongtin == 2) {
                 foreach ($arrPhuc as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
@@ -242,7 +266,7 @@ while (true) {
                     echo "\n";
                 }
             }
-            if ($chose_loai_thongke_thongtin == 'M') {
+            if ($chose_loai_thongke_thongtin == 3) {
                 foreach ($arrMay as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
@@ -255,7 +279,7 @@ while (true) {
         }
     }
     //Thong ke kho
-    if ($chose_thongke == 5) {
+    if ($chose_thongke == 2) {
         echo '+------------------------------------+';
         echo "\n";
         echo '| Chon loai thong ke:                |';
@@ -270,7 +294,11 @@ while (true) {
         echo "\n";
         echo '+------------------------------------+';
         echo "\n";
-        $chose_loai_thongke = readline('');
+        $chose_loai_thongke = readline('Ban muon thong ke gi: ');
+        while ($chose_loai_thongke > 4 || (is_numeric($chose_loai_thongke) == false && is_int($chose_loai_thongke) == false && is_double($chose_loai_thongke) == true) || $chose_loai_thongke <= 0) {
+            echo 'Ban da nhap sai, moi nhap lai: ';
+            $chose_loai_thongke = readline('');
+        }
         //Thong ke thong tin
         if ($chose_loai_thongke == 1) {
 
@@ -307,7 +335,7 @@ while (true) {
         }
     }
     //Thoat
-    if ($chose_thongke == 6) {
+    if ($chose_thongke == 3) {
         break;
     }
 }

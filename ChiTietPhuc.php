@@ -1,52 +1,54 @@
 <?php
 require_once 'ChiTiet.php';
-class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
+
+class ChiTietPhuc extends ChiTiet implements XuLy, NhapXuat
 {
     public $danh_sach_chi_tiet = array();
     public $so_luong_chi_tiet;
+
     //Ham nhap chi tiet Phuc
     public function Nhap($ma_so = null, $danh_sach_chi_tiet = null, $so_luong_chi_tiet_don = null)
     {
         echo 'Ma so Chi tiet Phuc co dang P** VD: P01, P02,P03..';
         echo "\n";
         $this->ma_so = readline('Nhap ma so Chi tiet Phuc: ');
-        while ($this->ma_so[0]!='P')  //Kiem tra nhap ma so chi tiet Phuc
+        while ($this->ma_so[0] != 'P')  //Kiem tra nhap ma so chi tiet Phuc
         {
 
             $this->ma_so = readline('Moi nhap lai ma so CT Phuc: ');
         }
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet con: ');
+        while ((is_numeric($this->so_luong_chi_tiet) == false && is_int($this->so_luong_chi_tiet) == false && is_double($this->so_luong_chi_tiet) == true) || $this->so_luong_chi_tiet <= 0) {
+            $this->$this->so_luong_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
 
-        for ($i = 0; $i <$this->so_luong_chi_tiet;$i++)
-        {
-            echo 'D: Chi tiet Don';
+        }
+
+        for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
+            echo '1: Chi tiet Don';
             echo "\n";
-            echo 'P: Chi tiet Phuc';
+            echo '2: Chi tiet Phuc';
             echo "\n";
             $loai_chi_tiet = readline('Nhap loai chi tiet: ');
+            while ($loai_chi_tiet > 2 || (is_numeric($loai_chi_tiet) == false && is_int($loai_chi_tiet) == false && is_double($loai_chi_tiet) == true) || $loai_chi_tiet <= 0) {
+                echo 'Ban da nhap sai, moi nhap lai: ';
+                $loai_chi_tiet = readline('');
+                echo '+------------------------------------+';
+                echo "\n";
+            }
             $new_chi_tiet = null;
-            if ($loai_chi_tiet == 'D')
-            {
+            if ($loai_chi_tiet == 1) {
                 $new_chi_tiet = new ChiTietDon();
                 $new_chi_tiet->Nhap();
-                array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
+                array_push($this->danh_sach_chi_tiet, $new_chi_tiet);
 
-            }
-            else if ($loai_chi_tiet == 'P')
-            {
+            } else if ($loai_chi_tiet == 2) {
                 $new_chi_tiet = new ChiTietPhuc();
                 $new_chi_tiet->Nhap();
-                array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
-            }
-            else
-            {
-                echo 'Ban da nhap sai loai chi tiet, moi nhap lai: ';
-                $i--;
+                array_push($this->danh_sach_chi_tiet, $new_chi_tiet);
             }
         }
-//        $new_chi_tiet->Nhap();
-//        array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
     }
+
     //Ham xuat thong tin chi tiet Phuc
     public function xuatThongTin()
     {
@@ -65,45 +67,38 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
         echo $this->so_luong_chi_tiet;
         echo "\n";
 
-        for($i=0; $i<$this->so_luong_chi_tiet; $i++)
-        {
-            if (substr($this->danh_sach_chi_tiet[$i]->ma_so,0,1) == 'P')//Kiem tra co la chi tiet Phuc hay k
+        for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
+            if (substr($this->danh_sach_chi_tiet[$i]->ma_so, 0, 1) == 'P')//Kiem tra co la chi tiet Phuc hay k
             {
 
                 $this->danh_sach_chi_tiet[$i]->xuatThongTin();
-            }
-            else
-            {
+            } else {
 
                 $this->danh_sach_chi_tiet[$i]->xuatThongTin();
             }
-//                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
         }
 
     }
+
     //Ham tinh tien chi tiet Phuc
     public function tinhTien()
     {
         $tongTien = 0;
-        for($i=0; $i<$this->so_luong_chi_tiet; $i++)
-        {
-            if (substr($this->danh_sach_chi_tiet[$i]->ma_so,0,1) == 'P')
-            {
+        for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
+            if (substr($this->danh_sach_chi_tiet[$i]->ma_so, 0, 1) == 'P') {
                 $tongTien += $this->danh_sach_chi_tiet[$i]->tinhTien();
-            }
-            else
-            {
+            } else {
                 $tongTien += $this->danh_sach_chi_tiet[$i]->tinhTien();
             }
         }
         return $tongTien;
     }
+
     //Ham tinh khoi luong CT Phuc
     public function tinhKhoiLuong()
     {
         $tongKL = 0;
-        for($i=0; $i<$this->so_luong_chi_tiet; $i++)
-        {
+        for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
 
             $tongKL += $this->danh_sach_chi_tiet[$i]->tinhKhoiLuong();
         }

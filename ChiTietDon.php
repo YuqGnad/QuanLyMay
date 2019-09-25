@@ -18,7 +18,15 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
             $this->ma_so = readline('Moi nhap lai ma so chi tiet don ');
         }
         $this->gia = readline('Nhap gia Chi tiet don: ');
+        while (is_numeric($this->gia) == false || $this->gia <= 0 ) {
+            echo 'Ban da nhap sai, moi nhap lai: ';
+            $this->gia= readline('');
+        }
         $this->khoi_luong = readline('Nhap khoi luong : ');
+        while (is_numeric($this->khoi_luong) == false || $this->khoi_luong <= 0 ) {
+            echo 'Ban da nhap sai, moi nhap lai: ';
+            $this->khoi_luong= readline('');
+        }
     }
 
     //Ham xuat chi tiet don
