@@ -1,10 +1,10 @@
 <?php
 require_once 'May.php';
 
-class Kho extends May implements NhapXuat,XuLy
+class Kho extends May
 {
     //Ham Nhap kho
-    public function Nhap()
+    public function Nhap($ma_so = null, $ten = null, $danh_sach_chi_tiet = null)
     {
         $this->ma_so = readline('Nhap ma so kho: ');
         while ($this->ma_so[0]!='K')  //Kiem tra nhap ma so Kho

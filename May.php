@@ -1,11 +1,11 @@
 <?php
 
 
-class May extends ChiTietPhuc implements NhapXuat,XuLy
+class May extends ChiTietPhuc
 {
     public $ten;
     //ham nhap may
-    public function Nhap($ma_so = null, $ten_may = null, $danh_sach_chi_tiet = null)
+    public function Nhap($ma_so = null, $ten = null, $danh_sach_chi_tiet = null)
     {
         $this->ma_so = readline('Nhap ma so may: ');
         while ($this->ma_so[0]!='M')  //Kiem tra nhap ma so May
