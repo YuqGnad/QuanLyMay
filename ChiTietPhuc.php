@@ -14,13 +14,13 @@ class ChiTietPhuc extends ChiTiet implements XuLy, NhapXuat
         $this->ma_so = readline('Nhap ma so Chi tiet Phuc: ');
         while ($this->ma_so[0] != 'P')  //Kiem tra nhap ma so chi tiet Phuc
         {
-
             $this->ma_so = readline('Moi nhap lai ma so CT Phuc: ');
         }
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet con: ');
         while ((is_numeric($this->so_luong_chi_tiet) == false && is_int($this->so_luong_chi_tiet) == false && is_double($this->so_luong_chi_tiet) == true) || $this->so_luong_chi_tiet <= 0) {
             $this->$this->so_luong_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
-
+            echo '+------------------------------------+';
+            echo "\n";
         }
 
         for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
@@ -30,8 +30,7 @@ class ChiTietPhuc extends ChiTiet implements XuLy, NhapXuat
             echo "\n";
             $loai_chi_tiet = readline('Nhap loai chi tiet: ');
             while ($loai_chi_tiet > 2 || (is_numeric($loai_chi_tiet) == false && is_int($loai_chi_tiet) == false && is_double($loai_chi_tiet) == true) || $loai_chi_tiet <= 0) {
-                echo 'Ban da nhap sai, moi nhap lai: ';
-                $loai_chi_tiet = readline('');
+                $loai_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
                 echo '+------------------------------------+';
                 echo "\n";
             }
