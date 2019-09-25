@@ -90,7 +90,7 @@ while (true) {
         echo 'Da nhap xong !';
         echo "\n";
     }
-    //Exit
+    //Toi menu Thong ke
     if ($chose_luachon == 3) {
 
         while (true) {
@@ -333,12 +333,13 @@ while (true) {
                     $kho->timKiemMayTheoMaSo($IDmay);
                 }
             }
-            //Thoat
+            //Toi Menu Nhap
             if ($chose_thongke == 3) {
                 break;
             }
         }
     }
+    //Exit
     if ($chose_luachon == 4) {
         break;
     }
