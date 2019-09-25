@@ -5,6 +5,7 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
 {
     public $gia;
     public $khoi_luong;
+
     //Ham nhap chi tiet don
     public function Nhap($ma_so = null, $gia = null, $khoi_luong = 0)
     {
@@ -18,6 +19,7 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
         $this->gia = readline('Nhap gia Chi tiet don: ');
         $this->khoi_luong = readline('Nhap khoi luong : ');
     }
+
     //Ham xuat chi tiet don
     public function xuatThongTin()
     {
@@ -25,18 +27,20 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
         echo "\n";
         echo '| Ma so chi tiet Don: ' . $this->ma_so;
         echo "\n";
-        echo '| Gia tien chi tiet Don: ' . $this->gia. ' VND';
+        echo '| Gia tien chi tiet Don: ' . $this->gia . ' VND';
         echo "\n";
-        echo '| Khoi luong chi tiet Don: ' . $this->khoi_luong. ' kg';
+        echo '| Khoi luong chi tiet Don: ' . $this->khoi_luong . ' kg';
         echo "\n";
         echo '+------------------------------------+';
         echo "\n";
     }
+
     //Ham lay gia tien chi tiet Don
     public function tinhTien()
     {
         return $this->gia;
     }
+
     //ham lay khoi luong chi tiet Don
     public function tinhKhoiLuong()
     {

@@ -77,7 +77,6 @@ while (true)
     //Nhap kho
     if ($chose_luachon == 2)
     {
-
         $kho = new Kho();
         $kho->Nhap();
         echo "\n";
@@ -85,8 +84,7 @@ while (true)
         echo "\n";
     }
     //Exit
-    if ($chose_luachon == 3)
-    {
+    if ($chose_luachon == 3) {
         break;
     }
 }
@@ -179,7 +177,7 @@ while (true) {
                 foreach ($arrDon as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
-                    echo 'Khoi luong chi tiet Don ' . $value->ma_so . ' la: ' . $value->tinhKhoiLuong().' kg';
+                    echo 'Khoi luong chi tiet Don ' . $value->ma_so . ' la: ' . $value->tinhKhoiLuong() . ' kg';
                     echo "\n";
                     echo '+------------------------------------+';
                     echo "\n";
@@ -190,7 +188,7 @@ while (true) {
                 foreach ($arrPhuc as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
-                    echo '| Khoi luong chi tiet Phuc ' . $value->ma_so . ' la: ' . $value->tinhKhoiLuong().' kg';
+                    echo '| Khoi luong chi tiet Phuc ' . $value->ma_so . ' la: ' . $value->tinhKhoiLuong() . ' kg';
                     echo "\n";
                     echo '+------------------------------------+';
                     echo "\n";
@@ -200,7 +198,7 @@ while (true) {
                 foreach ($arrMay as $value) {
                     echo '+------------------------------------+';
                     echo "\n";
-                    echo '| Khoi luong May ' . $value->ma_so . ' la: ' . $value->tinhKhoiLuong().' kg';
+                    echo '| Khoi luong May ' . $value->ma_so . ' la: ' . $value->tinhKhoiLuong() . ' kg';
                     echo "\n";
                     echo '+------------------------------------+';
                     echo "\n";
@@ -257,8 +255,7 @@ while (true) {
         }
     }
     //Thong ke kho
-    if ($chose_thongke == 5)
-    {
+    if ($chose_thongke == 5) {
         echo '+------------------------------------+';
         echo "\n";
         echo '| Chon loai thong ke:                |';
@@ -277,29 +274,29 @@ while (true) {
         //Thong ke thong tin
         if ($chose_loai_thongke == 1) {
 
-                $kho->xuatThongTin();
-                echo "\n";
+            $kho->xuatThongTin();
+            echo "\n";
         }
         //Thong ke khoi luong
         if ($chose_loai_thongke == 2) {
             echo '+------------------------------------+';
             echo "\n";
-            echo '| Tong khoi luong ' . $kho->ten . ' la: ' . $kho->tinhKhoiLuong().' kg';
+            echo '| Tong khoi luong ' . $kho->ten . ' la: ' . $kho->tinhKhoiLuong() . ' kg';
             echo "\n";
             echo '+------------------------------------+';
             echo "\n";
         }
         //Thong ke tong tien
-        if ($chose_loai_thongke== 3) {
+        if ($chose_loai_thongke == 3) {
             echo '+------------------------------------+';
             echo "\n";
-            echo 'Tong tien ' . $kho->ten . ' la: ' . $kho->tinhTien().' VND';
+            echo 'Tong tien ' . $kho->ten . ' la: ' . $kho->tinhTien() . ' VND';
             echo "\n";
             echo '+------------------------------------+';
             echo "\n";
         }
         //Tim may theo ID
-        if ($chose_loai_thongke==4) {
+        if ($chose_loai_thongke == 4) {
             echo '+------------------------------------+';
             echo "\n";
             $IDmay = readline('| Nhap ma so may can tim: ');
@@ -310,8 +307,7 @@ while (true) {
         }
     }
     //Thoat
-    if ($chose_thongke==6)
-    {
+    if ($chose_thongke == 6) {
         break;
     }
 }
