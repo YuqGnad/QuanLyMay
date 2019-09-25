@@ -25,11 +25,11 @@
     * Chi tiet Don
     * Chi tiet Phuc
     * May
-  * Tinh toan khoi luong khoa
+  * Tinh toan khoi luong Kho
 5. Thong ke tong tien
-  * Tong tien:
+  * Tinh tong tien:
     * Chi tiet Don
     * Chi tiet Phuc
     * May
-  * Tong tien cua Kho
+  * Tinh tong tien cua Kho
 6. Tim may theo ma so ( Thong ke Kho )         
