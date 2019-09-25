@@ -32,4 +32,6 @@
     * Chi tiet Phuc
     * May
   * Tinh tong tien cua Kho
-6. Tim may theo ma so ( Thong ke Kho )         
+6. Tim may theo ma so ( Thong ke Kho ) 
+## Chay chuong trinh:
+* Chay file Quanlymay.php        

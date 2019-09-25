@@ -85,12 +85,14 @@ class Kho extends May
     }
 
     //ham tim kiem may theo ma so
-    public function timKiemMayTheoMaSo($ma_so)
+    public function timKiemMayTheoMaSo($ma_so1)
     {
         for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
-            if ($this->danh_sach_chi_tiet[$i]->ma_so == $ma_so) {
-                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
-            } else echo 'Khong tim thay may nao !';
+            if ($this->danh_sach_chi_tiet[$i]->ma_so != $ma_so1) {
+                echo 'Khong tim thay may nao !';
+            }
+            else
+            $this->danh_sach_chi_tiet[$i]->xuatThongTin();
             echo "\n";
         }
     }
