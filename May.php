@@ -7,11 +7,11 @@ class May extends ChiTietPhuc
     //ham nhap may
     public function Nhap($ma_so = null, $ten = null, $danh_sach_chi_tiet = null)
     {
+        echo 'Ma so May co dang M** VD: M01, M02,M03..';
+        echo "\n";
         $this->ma_so = readline('Nhap ma so may: ');
         while ($this->ma_so[0]!='M')  //Kiem tra nhap ma so May
         {
-            echo 'Ma so May co dang M** VD: M01, M02,M03..';
-            echo "\n";
             $this->ma_so = readline('Moi nhap lai ma so may: ');
         }
         $this->ten = readline('Nhap ten may: ');

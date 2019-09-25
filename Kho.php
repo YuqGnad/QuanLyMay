@@ -6,11 +6,12 @@ class Kho extends May
     //Ham Nhap kho
     public function Nhap($ma_so = null, $ten = null, $danh_sach_chi_tiet = null)
     {
+        echo 'Ma so Kho co dang K** VD: K01, K02, K03..';
+        echo "\n";
         $this->ma_so = readline('Nhap ma so kho: ');
         while ($this->ma_so[0]!='K')  //Kiem tra nhap ma so Kho
         {
-            echo 'Ma so Kho co dang K** VD: K01, K02, K03..';
-            echo "\n";
+
             $this->ma_so = readline('Moi nhap lai ma so kho: ');
         }
         $this->ten = readline('Nhap ten kho: ');

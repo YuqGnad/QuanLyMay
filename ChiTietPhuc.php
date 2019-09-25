@@ -7,11 +7,12 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
     //Ham nhap chi tiet Phuc
     public function Nhap($ma_so = null, $danh_sach_chi_tiet = null, $so_luong_chi_tiet_don = null)
     {
+        echo 'Ma so Chi tiet Phuc co dang P** VD: P01, P02,P03..';
+        echo "\n";
         $this->ma_so = readline('Nhap ma so Chi tiet Phuc: ');
         while ($this->ma_so[0]!='P')  //Kiem tra nhap ma so chi tiet Phuc
         {
-            echo 'Ma so Chi tiet Phuc co dang P** VD: P01, P02,P03..';
-            echo "\n";
+
             $this->ma_so = readline('Moi nhap lai ma so CT Phuc: ');
         }
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet con: ');
@@ -31,11 +32,16 @@ class ChiTietPhuc extends ChiTiet implements XuLy,NhapXuat
                 array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
 
             }
-            if ($loai_chi_tiet == 'P')
+            else if ($loai_chi_tiet == 'P')
             {
                 $new_chi_tiet = new ChiTietPhuc();
                 $new_chi_tiet->Nhap();
                 array_push($this->danh_sach_chi_tiet,$new_chi_tiet);
+            }
+            else
+            {
+                echo 'Ban da nhap sai loai chi tiet, moi nhap lai: ';
+                $i--;
             }
         }
 //        $new_chi_tiet->Nhap();

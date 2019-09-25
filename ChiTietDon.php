@@ -9,11 +9,12 @@ class ChiTietDon extends ChiTiet implements NhapXuat, XuLy
     //Ham nhap chi tiet don
     public function Nhap($ma_so = null, $gia = null, $khoi_luong = 0)
     {
+        echo 'Ma so Chi tiet Don co dang D** VD: D01, D02,D03..';
+        echo "\n";
         $this->ma_so = readline('Nhap ma so Chi tiet don: ');
         while ($this->ma_so[0]!='D')  //Kiem tra nhap ma so chi tiet don
         {
-            echo 'Ma so Chi tiet Don co dang D** VD: D01, D02,D03..';
-            echo "\n";
+
             $this->ma_so = readline('Moi nhap lai ma so chi tiet don ');
         }
         $this->gia = readline('Nhap gia Chi tiet don: ');
