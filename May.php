@@ -20,7 +20,7 @@ class May extends ChiTietPhuc
         $this->ten = readline('Nhap ten may: ');
 
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet cua may: ');
-        while ((is_numeric($this->so_luong_chi_tiet) == false && is_int($this->so_luong_chi_tiet) == false && is_double($this->so_luong_chi_tiet) == true) || $this->so_luong_chi_tiet <= 0) {
+        while ((float)$this->so_luong_chi_tiet < 1 || ((float)$this->so_luong_chi_tiet - (int)$this->so_luong_chi_tiet > 0 )|| (int)strpos($this->so_luong_chi_tiet,',') > 0) {
             $this->so_luong_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
             echo '+------------------------------------+';
             echo "\n";
@@ -31,9 +31,10 @@ class May extends ChiTietPhuc
             echo '2: Chi tiet Phuc';
             echo "\n";
             $loai_chi_tiet = readline('Nhap loai chi tiet: ');
-            while ((is_numeric($loai_chi_tiet) == false && is_int($loai_chi_tiet) == false && is_double($loai_chi_tiet) == true) || $loai_chi_tiet <= 0 || $loai_chi_tiet > 2) {
-                echo 'Ban da nhap sai, moi nhap lai: ';
-                $loai_chi_tiet = readline('');
+            while (!in_array($loai_chi_tiet,['1','2'],true)) {
+                echo '+------------------------------------+';
+                echo "\n";
+                $loai_chi_tiet = readline('| Ban da nhap sai, moi nhap lai:');
                 echo '+------------------------------------+';
                 echo "\n";
             }

@@ -17,19 +17,21 @@ class Kho extends May
         $this->ten = readline('Nhap ten kho: ');
 
         $this->so_luong_chi_tiet = readline('Nhap so luong may: ');
-        while ((is_numeric($this->so_luong_chi_tiet) == false && is_int($this->so_luong_chi_tiet) == false && is_double($this->so_luong_chi_tiet)== true) || $this->so_luong_chi_tiet <= 0) {
-            $this->so_luong_chi_tiet = readline('Ban da nhap sai, moi nhap lai:');
+        while ((float)$this->so_luong_chi_tiet < 1 || ((float)$this->so_luong_chi_tiet - (int)$this->so_luong_chi_tiet > 0 )|| (int)strpos($this->so_luong_chi_tiet,',') > 0) {
+            echo '+------------------------------------+';
+            echo "\n";
+            $this->so_luong_chi_tiet = readline('| Ban da nhap sai, moi nhap lai:');
             echo '+------------------------------------+';
             echo "\n";
         }
         $may = null;
         for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
             $j = $this->so_luong_chi_tiet - $i;
-            echo '+--------------------------+';
+            echo '+------------------------------------+';
             echo "\n";
             echo '|So may can nhap:  ' . $j; //In ra so luong can nhap
             echo "\n";
-            echo '+--------------------------+';
+            echo '+------------------------------------+';
             echo "\n";
             $may = null;
             $may = new May();
@@ -85,15 +87,47 @@ class Kho extends May
     }
 
     //ham tim kiem may theo ma so
-    public function timKiemMayTheoMaSo($ma_so1)
+    public function timKiemMayTheoMaSo($ma_so)
     {
         for ($i = 0; $i < $this->so_luong_chi_tiet; $i++) {
-            if ($this->danh_sach_chi_tiet[$i]->ma_so != $ma_so1) {
+            if ($this->danh_sach_chi_tiet[$i]->ma_so != $ma_so) {
                 echo 'Khong tim thay may nao !';
+                echo "\n";
             }
-            else
-            $this->danh_sach_chi_tiet[$i]->xuatThongTin();
-            echo "\n";
+            else {
+                $this->danh_sach_chi_tiet[$i]->xuatThongTin();
+                echo "\n";
+            }
+        }
+    }
+    public function tinhKhoiLuongMayTheoMaSo($ma_so)
+    {
+        for($i = 0; $i < $this->so_luong_chi_tiet; $i++)
+        {
+            if ($this->danh_sach_chi_tiet[$i]->ma_so != $ma_so) {
+                echo 'Khong tim thay may nao !';
+                echo "\n";
+            }
+            else {
+                return $this->danh_sach_chi_tiet[$i]->tinhKhoiLuong();
+                echo "\n";
+            }
+
+        }
+    }
+    public function tinhTienMayTheoMaSo($ma_so)
+    {
+        for($i = 0; $i < $this->so_luong_chi_tiet; $i++)
+        {
+            if ($this->danh_sach_chi_tiet[$i]->ma_so != $ma_so) {
+                echo 'Khong tim thay may nao !';
+                echo "\n";
+            }
+            else {
+                return $this->danh_sach_chi_tiet[$i]->tinhTien();
+                echo "\n";
+            }
+
         }
     }
 }

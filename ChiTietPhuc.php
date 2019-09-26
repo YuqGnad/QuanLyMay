@@ -17,9 +17,9 @@ class ChiTietPhuc extends ChiTiet implements XuLy, NhapXuat
             $this->ma_so = readline('Moi nhap lai ma so CT Phuc: ');
         }
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet con: ');
-        while ((is_numeric($this->so_luong_chi_tiet) == false && is_int($this->so_luong_chi_tiet) == false && is_double($this->so_luong_chi_tiet) == true) || $this->so_luong_chi_tiet <= 0) {
-            $this->$this->so_luong_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
-            echo '+------------------------------------+';
+        while ((float)$this->so_luong_chi_tiet < 1 || ((float)$this->so_luong_chi_tiet- (int)$this->so_luong_chi_tiet > 0 )|| (int)strpos($this->so_luong_chi_tiet,',') > 0) {
+            $this->so_luong_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
+            echo '+--------------------------+';
             echo "\n";
         }
 
@@ -29,7 +29,7 @@ class ChiTietPhuc extends ChiTiet implements XuLy, NhapXuat
             echo '2: Chi tiet Phuc';
             echo "\n";
             $loai_chi_tiet = readline('Nhap loai chi tiet: ');
-            while ($loai_chi_tiet > 2 || (is_numeric($loai_chi_tiet) == false && is_int($loai_chi_tiet) == false && is_double($loai_chi_tiet) == true) || $loai_chi_tiet <= 0) {
+            while (!in_array($loai_chi_tiet,['1','2'],true)) {
                 $loai_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
                 echo '+------------------------------------+';
                 echo "\n";
