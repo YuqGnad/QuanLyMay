@@ -9,7 +9,7 @@ class Kho extends May
         echo 'Ma so Kho co dang K** VD: K01, K02, K03..';
         echo "\n";
         $this->ma_so = readline('Nhap ma so kho: ');
-        while ($this->ma_so[0] != 'K')  //Kiem tra nhap ma so Kho
+        while ($this->ma_so[0] !== 'K')  //Kiem tra nhap ma so Kho
         {
 
             $this->ma_so = readline('Moi nhap lai ma so kho: ');

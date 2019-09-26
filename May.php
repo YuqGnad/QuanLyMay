@@ -13,7 +13,7 @@ class May extends ChiTietPhuc
         echo 'Ma so May co dang M** VD: M01, M02,M03..';
         echo "\n";
         $this->ma_so = readline('Nhap ma so may: ');
-        while ($this->ma_so[0] != 'M')  //Kiem tra nhap ma so May
+        while ($this->ma_so[0] !== 'M')  //Kiem tra nhap ma so May
         {
             $this->ma_so = readline('Moi nhap lai ma so may: ');
         }

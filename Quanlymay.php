@@ -71,11 +71,35 @@ while (true) {
                     $chi_tiet_con = new ChiTietPhuc();
                     $chi_tiet_con->Nhap();
                     array_push($arrPhuc, $chi_tiet_con);
+                    for ($i =0; $i < sizeof($arrPhuc); $i++ )
+                    {
+                        for ( $j = 0; $j < sizeof($arrPhuc[$i]->danh_sach_chi_tiet); $j++)
+                        {
+                            if ( substr($arrPhuc[$i]->danh_sach_chi_tiet[$j]->ma_so,0,1) === 'D')
+                            {
+                                array_push($arrDon, $arrPhuc[$i]->danh_sach_chi_tiet[$j]);
+                            }
+                        }
+                    }
                     break;
                 case 3: //May
                     $chi_tiet_con = new May();
                     $chi_tiet_con->Nhap();
                     array_push($arrMay, $chi_tiet_con);
+                    for ($i =0; $i < sizeof($arrMay); $i++ )
+                        {
+                                for ( $j = 0; $j < sizeof($arrMay[$i]->danh_sach_chi_tiet); $j++)
+                                {
+                                    if ( substr($arrMay[$i]->danh_sach_chi_tiet[$j]->ma_so,0,1) === 'P')
+                                    {
+                                        array_push($arrPhuc, $arrMay[$i]->danh_sach_chi_tiet[$j]);
+                                    }
+                                    if ( substr($arrMay[$i]->danh_sach_chi_tiet[$j]->ma_so,0,1) === 'D')
+                                    {
+                                        array_push($arrDon, $arrMay[$i]->danh_sach_chi_tiet[$j]);
+                                    }
+                                }
+                        }
                     break;
             }
             echo 'Da nhap xong !';
@@ -84,9 +108,24 @@ while (true) {
     }
     //Nhap kho
     if ($chose_luachon == 2) {
-        $kho = new Kho();
-        $kho->Nhap();
-        echo "\n";
+//        $chose_nhap_may = readline('Ban muon nhap moi hay lay may co san: ');
+//        echo "\n";
+//        echo "1. Nhap moi may";
+//        echo "\n";
+//        echo "2. Lay may co san:";
+//        echo "\n";
+//        if ($chose_nhap_may == 1) {
+            $kho = new Kho();
+            $kho->Nhap();
+//            echo "\n";
+//            for ( $i = 0; $i < sizeof($kho->danh_sach_chi_tiet); $i++)
+//            {
+//                if ( substr($arrPhuc[$i]->danh_sach_chi_tiet[$j]->ma_so,0,1) === '')
+//                {
+//                    array_push($arrDon, $arrPhuc[$i]->danh_sach_chi_tiet[$j]);
+//                }
+//            }
+//        }
         echo 'Da nhap xong !';
         echo "\n";
     }
