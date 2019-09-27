@@ -15,12 +15,26 @@ class May extends ChiTietPhuc
         $this->ma_so = readline('Nhap ma so may: ');
         while ($this->ma_so[0] !== 'M')  //Kiem tra nhap ma so May
         {
-            $this->ma_so = readline('Moi nhap lai ma so may: ');
+            echo '+------------------------------------+';
+            echo "\n";
+            $this->ma_so = readline('Ban da nhap sai, moi nhap lai: ');
+            echo '+------------------------------------+';
+            echo "\n";
         }
         $this->ten = readline('Nhap ten may: ');
+        while ($this->ten[0] === ' ') {
+            echo '+------------------------------------+';
+            echo "\n";
+            $this->ten = readline('Ban da nhap sai, moi nhap lai: ');
+            echo '+------------------------------------+';
+            echo "\n";
+        }
+
 
         $this->so_luong_chi_tiet = readline('Nhap so luong chi tiet cua may: ');
         while ((float)$this->so_luong_chi_tiet < 1 || ((float)$this->so_luong_chi_tiet - (int)$this->so_luong_chi_tiet > 0 )|| (int)strpos($this->so_luong_chi_tiet,',') > 0) {
+            echo '+------------------------------------+';
+            echo "\n";
             $this->so_luong_chi_tiet = readline('Ban da nhap sai, moi nhap lai: ');
             echo '+------------------------------------+';
             echo "\n";
