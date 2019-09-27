@@ -252,7 +252,7 @@ while (true) {
                 }
                 //Thong ke tong tien
                 if ($chose_loai_thongke == 3) {
-                    echo ' Thong ke tong tien chi tiet';
+                    echo 'Thong ke tong tien: ';
                     echo "\n";
                     echo '+------------------------------------+';
                     echo "\n";
@@ -264,7 +264,7 @@ while (true) {
                     echo "\n";
                     echo '+------------------------------------+';
                     echo "\n";
-                    $chose_loai_thongke_thongtin = readline('Ban muon thong ke doi tuong nao');
+                    $chose_loai_thongke_thongtin = readline('Ban muon thong ke doi tuong nao: ');
                     while (!in_array($chose_loai_thongke_thongtin,['1','2'], true)) {
                         echo '+------------------------------------+';
                         echo "\n";
@@ -277,6 +277,7 @@ while (true) {
                             echo '+------------------------------------+';
                             echo "\n";
                             echo '| Tong tien chi tiet Don ' . $value->ma_so . ' la: ' . $value->tinhTien();
+                            echo "\n";
                             echo '+------------------------------------+';
                             echo "\n";
                         }
