@@ -14,7 +14,6 @@ $kho = null;
 //Ham kiem tra nhap
 while (true) {
     //Menu nhap
-    echo var_dump(' ');
     echo '+------------------------------------+';
     echo "\n";
     echo '|              MENU NHAP             |';
